@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce más sobre CyberRaccoon - Nuestra misión en ciberseguridad móvil">
+    <title>Acerca de | CyberRaccoon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* Estilos específicos para la página Acerca de */
+        .about-hero {
+            background: linear-gradient(135deg, rgba(15, 20, 25, 0.95) 0%, rgba(26, 31, 46, 0.95) 100%),
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a1f2e"/><path d="M0 0L100 100M100 0L0 100" stroke="%233b82f6" stroke-width="0.5" opacity="0.1"/></svg>');
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .mission-vision {
+            background: var(--secondary);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .value-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .team-section {
+            margin: 4rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-role {
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--accent);
+        }
+
+        .video-container {
+            background: var(--secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .main-video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .video-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .resource-card {
+            background: var(--secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .resource-icon img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+            position: relative;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .certification-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .certification-item img {
+            max-height: 60px;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 40px);
+                margin-left: 40px !important;
+                margin-right: 0 !important;
+            }
+            
+            .timeline-item::before {
+                left: -30px !important;
+                right: auto !important;
+            }
+            
+            .member-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Checkbox para menú móvil -->
+    <input type="checkbox" id="mobile-menu-toggle" class="sr-only">
+    
+    <!-- Header CORREGIDO -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-mascot">
+                        <div class="logo-body">
+                            <div class="logo-face">
+                                <div class="logo-mask"></div>
+                                <div class="logo-eyes">
+                                    <div class="logo-eye">
+                                        <div class="logo-eye-shine"></div>
+                                    </div>
+                                    <div class="logo-eye">
+                                        <div class="logo-eye-shine"></div>
+                                    </div>
+                                </div>
+                                <div class="logo-nose"></div>
+                            </div>
+                            <div class="logo-ears">
+                                <div class="logo-ear"></div>
+                                <div class="logo-ear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-title">CyberRaccoon</div>
+                        <div class="logo-slogan">Seguridad móvil inteligente</div>
+                    </div>
+                </div>
+                
+                <!-- Menú principal CORREGIDO -->
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#amenazas" class="nav-link">Amenazas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#proteccion" class="nav-link">Protección</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#articulos" class="nav-link">Artículos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="acerca-de.html" class="nav-link active">Acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contacto.html" class="nav-link">Contacto</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Botones de acción -->
+                <div class="header-actions">
+                    <a href="#suscripcion" class="btn btn-outline">Suscribirse</a>
+                    <a href="#empezar" class="btn">Empezar</a>
+                </div>
+
+                <!-- Botón de menú móvil -->
+                <label for="mobile-menu-toggle" class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <!-- Hero Section -->
+        <section class="about-hero fade-in">
+            <div class="container">
+                <h1>Nuestra Misión en Ciberseguridad Móvil</h1>
+                <p class="hero-subtitle">Protegiendo tu mundo digital desde 2020</p>
+            </div>
+        </section>
+
+        <!-- Misión y Visión -->
+        <section class="fade-in">
+            <div class="container">
+                <div class="mission-vision">
+                    <div class="section-title">
+                        <h2>¿Quiénes Somos?</h2>
+                        <p>CyberRaccoon nació de la necesidad de educar y proteger a los usuarios móviles en un mundo digital cada vez más complejo</p>
+                    </div>
+                    
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <img src="images/icons/mission-icon.png" alt="Misión">
+                            </div>
+                            <h3>Misión</h3>
+                            <p>Empoderar a los usuarios mediante educación accesible y herramientas prácticas para navegar el mundo digital de forma segura y confiada.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <img src="images/icons/vision-icon.png" alt="Visión">
+                            </div>
+                            <h3>Visión</h3>
+                            <p>Ser la plataforma líder en educación de ciberseguridad móvil, creando una comunidad global de usuarios conscientes y protegidos.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <img src="images/icons/values-icon.png" alt="Valores">
+                            </div>
+                            <h3>Valores</h3>
+                            <p>Transparencia, educación accesible, innovación constante y compromiso con la seguridad digital de nuestros usuarios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Corporativo -->
+        <section class="fade-in">
+            <div class="container">
+                <div class="video-container">
+                    <div class="section-title">
+                        <h2>Conoce Nuestro Trabajo</h2>
+                        <p>Video explicativo sobre nuestra metodología y enfoque</p>
+                    </div>
+                    
+                    <video controls poster="images/video-corporativo-poster.jpg" class="main-video">
+                        <source src="videos/presentacion-corporativa.mp4" type="video/mp4">
+                        <source src="videos/presentacion-corporativa.webm" type="video/webm">
+                        Tu navegador no soporta el elemento video.
+                    </video>
+                    
+                    <div class="video-controls">
+                        <button class="video-btn play-pause">▶️ Reproducir</button>
+                        <button class="video-btn mute">🔊 Sonido</button>
+                        <button class="video-btn fullscreen">⛶ Pantalla completa</button>
+                    </div>
+                    
+                    <div class="video-description" style="text-align: center; margin-top: 2rem;">
+                        <p>En este video, nuestro equipo explica cómo combinamos tecnología avanzada con educación accesible para crear soluciones de seguridad que realmente funcionan para el usuario promedio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas -->
+        <section class="fade-in">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nuestro Impacto</h2>
+                    <p>Métricas que demuestran nuestro compromiso con la comunidad</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Usuarios Protegidos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Artículos Publicados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Satisfacción del Usuario</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Soporte Activo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificaciones -->
+        <section class="fade-in">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Certificaciones y Reconocimientos</h2>
+                    <p>Estándares de calidad y reconocimientos de la industria</p>
+                </div>
+                
+                <div class="certifications">
+                    <div class="certification-item">
+                        <img src="images/certifications/iso-27001.png" alt="ISO 27001" loading="lazy">
+                    </div>
+                    <div class="certification-item">
+                        <img src="images/certifications/cybersecurity-excellence.png" alt="Cybersecurity Excellence" loading="lazy">
+                    </div>
+                    <div class="certification-item">
+                        <img src="images/certifications/owasp.png" alt="OWASP" loading="lazy">
+                    </div>
+                    <div class="certification-item">
+                        <img src="images/certifications/nist.png" alt="NIST Framework" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="fade-in">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nuestra Historia</h2>
+                    <p>El camino que nos llevó a convertirnos en referentes de seguridad móvil</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>2020 - Fundación</h3>
+                        <p>CyberRaccoon nace como respuesta al creciente número de ataques móviles durante la pandemia.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>2021 - Primera App</h3>
+                        <p>Lanzamos nuestra primera aplicación de análisis de seguridad para dispositivos Android.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>2022 - Expansión</h3>
+                        <p>Ampliamos nuestra cobertura a iOS y comenzamos colaboraciones con empresas de seguridad.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>2023 - Reconocimiento</h3>
+                        <p>Ganamos el premio a "Mejor Plataforma Educativa en Ciberseguridad" del año.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipo -->
+        <section class="team-section fade-in">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nuestro Equipo</h2>
+                    <p>Expertos apasionados por la seguridad digital</p>
+                </div>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="images/team/alex-rodriguez.jpg" alt="Alex Rodríguez - Fundador & CEO" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3>Alex Rodríguez</h3>
+                            <div class="member-role">Fundador & CEO</div>
+                            <p>+10 años en ciberseguridad. Ex-consultor de seguridad en empresas Fortune 500.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="images/team/maria-gonzalez.jpg" alt="María González - Directora de Investigación" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3>María González</h3>
+                            <div class="member-role">Directora de Investigación</div>
+                            <p>Especialista en malware móvil y análisis de amenazas emergentes.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="images/team/carlos-mendoza.jpg" alt="Carlos Mendoza - Líder Educativo" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3>Carlos Mendoza</h3>
+                            <div class="member-role">Líder Educativo</div>
+                            <p>Diseña programas educativos accesibles para todos los niveles de conocimiento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos y Enlaces -->
+        <section class="fade-in">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Recursos Adicionales</h2>
+                    <p>Enlaces externos y herramientas recomendadas</p>
+                </div>
+                
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <img src="images/icons/external-links.png" alt="Enlaces externos">
+                        </div>
+                        <h3>🔗 Enlaces Recomendados</h3>
+                        <ul>
+                            <li><a href="https://www.kaspersky.com" target="_blank">Kaspersky Lab - Análisis de amenazas</a></li>
+                            <li><a href="https://www.us-cert.gov" target="_blank">US-CERT - Alertas oficiales</a></li>
+                            <li><a href="https://owasp.org" target="_blank">OWASP - Estándares de seguridad</a></li>
+                            <li><a href="https://www.sans.org" target="_blank">SANS Institute - Cursos</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <img src="images/icons/library.png" alt="Biblioteca">
+                        </div>
+                        <h3>📚 Biblioteca Digital</h3>
+                        <ul>
+                            <li>Guía completa de configuración segura</li>
+                            <li>Diccionario de términos de seguridad</li>
+                            <li>Checklist de protección mensual</li>
+                            <li>Casos de estudio reales</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <img src="images/icons/tools.png" alt="Herramientas">
+                        </div>
+                        <h3>🛠️ Herramientas</h3>
+                        <ul>
+                            <li>Analizador de permisos de apps</li>
+                            <li>Verificador de redes Wi-Fi</li>
+                            <li>Generador de contraseñas seguras</li>
+                            <li>Scanner de vulnerabilidades</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audio Section -->
+        <section class="fade-in">
+            <div class="container">
+                <div class="video-container">
+                    <div class="section-title">
+                        <h2>Podcast de Seguridad</h2>
+                        <p>Escucha nuestros episodios sobre tendencias en ciberseguridad</p>
+                    </div>
+                    
+                    <div class="audio-player" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 10px; margin: 1rem 0;">
+                        <h4>🎧 Episodio: "Amenazas Móviles 2024"</h4>
+                        <p style="color: var(--text-light); margin: 1rem 0;">Duración: 25 min | Fecha: 15 Sept 2024</p>
+                        <audio controls style="width: 100%; max-width: 400px; margin: 1rem 0;">
+                            <source src="audio/amenazas-moviles-2024.mp3" type="audio/mpeg">
+                            <source src="audio/amenazas-moviles-2024.ogg" type="audio/ogg">
+                            Tu navegador no soporta el elemento audio.
+                        </audio>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn">Descargar Episodio</button>
+                        </div>
+                    </div>
+                    
+                    <div class="video-description">
+                        <p>En este episodio analizamos las principales amenazas móviles que dominarán el 2024 y cómo prepararse para ellas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-mascot">
+                            <div class="logo-body">
+                                <div class="logo-face">
+                                    <div class="logo-mask"></div>
+                                    <div class="logo-eyes">
+                                        <div class="logo-eye">
+                                            <div class="logo-eye-shine"></div>
+                                        </div>
+                                        <div class="logo-eye">
+                                            <div class="logo-eye-shine"></div>
+                                        </div>
+                                    </div>
+                                    <div class="logo-nose"></div>
+                                </div>
+                                <div class="logo-ears">
+                                    <div class="logo-ear"></div>
+                                    <div class="logo-ear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="logo-text">
+                            <div class="logo-title">CyberRaccoon</div>
+                            <div class="logo-slogan">Seguridad móvil inteligente</div>
+                        </div>
+                    </div>
+                    <p>Tu socio confiable en educación y protección de ciberseguridad móvil. Estamos dedicados a ayudar a los usuarios a navegar el mundo digital de manera segura.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <img src="images/social/facebook.png" alt="Facebook" class="social-icon">
+                        </a>
+                        <a href="#" class="social-link">
+                            <img src="images/social/twitter.png" alt="Twitter" class="social-icon">
+                        </a>
+                        <a href="#" class="social-link">
+                            <img src="images/social/linkedin.png" alt="LinkedIn" class="social-icon">
+                        </a>
+                        <a href="#" class="social-link">
+                            <img src="images/social/instagram.png" alt="Instagram" class="social-icon">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#amenazas">Amenazas</a></li>
+                        <li><a href="index.html#proteccion">Protección</a></li>
+                        <li><a href="index.html#articulos">Artículos</a></li>
+                        <li><a href="acerca-de.html">Acerca de</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Herramientas de Seguridad</a></li>
+                        <li><a href="#">Base de Datos de Amenazas</a></li>
+                        <li><a href="#">Lista de Verificación</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Glosario</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CyberRaccoon. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Control de video
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.main-video');
+            const playPauseBtn = document.querySelector('.play-pause');
+            const muteBtn = document.querySelector('.mute');
+            const fullscreenBtn = document.querySelector('.fullscreen');
+
+            if (video && playPauseBtn) {
+                playPauseBtn.addEventListener('click', function() {
+                    if (video.paused) {
+                        video.play();
+                        playPauseBtn.textContent = '⏸️ Pausar';
+                    } else {
+                        video.pause();
+                        playPauseBtn.textContent = '▶️ Reproducir';
+                    }
+                });
+
+                muteBtn.addEventListener('click', function() {
+                    video.muted = !video.muted;
+                    muteBtn.textContent = video.muted ? '🔇 Silenciado' : '🔊 Sonido';
+                });
+
+                fullscreenBtn.addEventListener('click', function() {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) {
+                        video.msRequestFullscreen();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
